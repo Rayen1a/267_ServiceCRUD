@@ -16,6 +16,10 @@ const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'mahasiswa',
-    password: '123ra',
+    password: '',//sesuaikan dengan password database masing masing
     port: 5432,
 })
+
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`);
+});
