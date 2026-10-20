@@ -1,5 +1,6 @@
 import express from 'express'
 import pg from 'pg'
+
 const app = express()
 const port = 3000
 const { Pool } = pg
@@ -10,11 +11,12 @@ app.use(
         extended: true,
     })
 )
+
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'mahasiswa',
-    password: '1234ra',
+    password: '123ra',
     port: 5432,
 });
 
@@ -54,12 +56,6 @@ app.put('/biodata/:id', (req, res) => {
         [nama, nim, kelas, id]
     )
         .then(result => {
-            if (result.rowCount === 0) {
-                return res.status(404).json({
-                    message: "Data tidak ditemukan"
-                });
-            }
-
             res.json({
                 message: "Data berhasil diupdate",
                 data: result.rows[0]
@@ -70,6 +66,8 @@ app.put('/biodata/:id', (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 });
+
+// Tambahkan di bawah endpoint PUT
 
 // DELETE (Hapus Data)
 app.delete('/biodata/:id', (req, res) => {
