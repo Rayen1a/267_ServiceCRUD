@@ -34,6 +34,11 @@ app.get('/', (req, res) => {
         });
 });
 
+// POST (Tambah Data)
+app.post('/biodata', (req, res) => {
+    const { id, nama, nim, kelas } = req.body;
+});
+
 app.listen(port, () => {
     console.log(`App running on port ${port}.`);
 });
